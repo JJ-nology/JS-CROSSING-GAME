@@ -8,31 +8,31 @@ This game asks the player to help character cross a busy road without being hit 
 
 # HTML requirements
 
-- [ ] Set up the game area/ window - maybe canvas element.
-- [ ] Have clear start and end area.
-- [ ] Set up an element to hold the crossing item/ animal.
-- [ ] Set up an element to hold the 'vehicles' on the road - maybe div for multiple vehicles to be created.
-- [ ] Other elements
+- [x] Set up the game area/ window - maybe canvas element.
+- [x] Have clear start and end area.
+- [x] Set up an element to hold the crossing item/ animal.
+- [x] Set up an element to hold the 'vehicles' on the road - maybe div for multiple vehicles to be created.
+- [x] Other elements
 
-  - [ ] Score/ level display
-  - [ ] Game title
+  - [x] Score/ level display
+  - [x] Game title
 
     CLASSES AND ID'S
 
-    - - [ ] # gameWindow
-    - - [ ] vehicle-list
-    - - [ ] #playerCharacter
-    - - [ ] level-display
+    - - [x] # gameWindow
+    - - [x] vehicle-list
+    - - [x] #playerCharacter
+    - - [x] level-display
 
 #
 
 # SCSS
 
 - [ ] Use background image of a road with at least 10 lanes and white road markings.
-- [ ] Screen dimensions responsive.
-- [ ] Use grid rows to ensure vehicles appear and move on the correct area of the background (from left to right).
-- [ ] Choose color scheme for remaining screen area.
-- [ ] Same color for display, title and other writing on screen.
+- [x] Screen dimensions responsive.
+- [x] Use grid rows to ensure vehicles appear and move on the correct area of the background (from left to right).
+- [x] Choose color scheme for remaining screen area.
+- [x] Same color for display, title and other writing on screen.
 
 #
 

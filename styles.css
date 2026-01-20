@@ -1,0 +1,57 @@
+body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-window {
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+  width: 80vw;
+  max-height: 80vh;
+  margin: auto;
+}
+
+.road-area {
+  display: grid;
+  align-items: start;
+  row-gap: 1px;
+  grid-template-rows: auto;
+}
+
+.road-lane {
+  overflow: hidden;
+  background-color: rgb(47, 46, 46);
+  height: 50px;
+  color: white;
+  align-items: stretch;
+  text-decoration: dashed;
+}
+
+.end-zone {
+  height: 4em;
+}
+
+.start-zone {
+  height: 4em;
+}
+
+.stripe {
+  position: relative;
+  opacity: 0.5;
+  top: 50%;
+  width: 210vw;
+  min-width: 210vw;
+  height: 5%;
+  background: repeating-linear-gradient(to left, white, white 6vw, transparent 6vw, transparent 20vw);
+  background-repeat: space;
+}
+
+#level {
+  align-self: flex-end;
+}
+
+.container {
+  display: inline-block;
+}
