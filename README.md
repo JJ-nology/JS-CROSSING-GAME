@@ -39,7 +39,7 @@ This game asks the player to help character cross a busy road without being hit 
 # JS
 
 1. [ ] When player clicks on START button.
-   - [ ] Player character should be on-screen.
+   - [x] Player character should be on-screen.
    - [ ] Vehicles should be created and should start moving across the screen
      - [ ] Object vehicles created programmatically.
      - [ ] Attributes = color, speed, starting position.

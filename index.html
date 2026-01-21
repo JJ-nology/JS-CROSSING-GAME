@@ -7,59 +7,70 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>JS crossing</h1>
-      <h2>Level:<span class="level-display">1</span></h2>
+    <div class="start-container">
+      <p>Help Pengoo reach the other side</p>
+      <p class="start-instructions">Using only the down arrow</p>
+      <button class="start-button">Let's Play</button>
     </div>
 
-    <div class="game-window">
-      <div class="road-area">
-        <div class="end-zone">end-zone</div>
-
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="road-lane">
-          <div class="stripe"></div>
-          <ul class="vehicle-list"></ul>
-        </div>
-        <div class="start-zone">startzone</div>
+    <div class="game-window hide-this">
+      <div class="container game-on">
+        <h1>JS crossing</h1>
+        <h2>Level:<span class="level-display">1</span></h2>
       </div>
+      <div class="road-area">
+        <div class="start-zone">start-zone</div>
 
-      <div><img src="" alt="Player character" id="playerCharacter" /></div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="road-lane">
+          <div class="stripe"></div>
+          <ul class="vehicle-list"></ul>
+        </div>
+        <div class="end-zone">end zone</div>
+      </div>
+    </div>
+    <div>
+      <img
+        src="./penguin.png"
+        alt="Player character"
+        id="playerCharacter"
+        class="hide-this"
+      />
     </div>
   </body>
   <script src="./index.js" charset="UTF-8"></script>
