@@ -3,10 +3,23 @@ body {
   display: flex;
   flex-direction: column;
 }
+.start-container {
+  margin: auto;
+  padding-bottom: 10px;
+}
+button {
+  display: flex;
+  background-color: #e2725b;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
 .game-window {
+  display: none;
+  position: relative;
+  z-index: -1;
   display: flex;
   flex-direction: column;
-  background-color: green;
   width: 80vw;
   max-height: 80vh;
   margin: auto;
@@ -16,6 +29,7 @@ body {
   align-items: start;
   row-gap: 1px;
   grid-template-rows: auto;
+  background-color: green;
 }
 .road-lane {
   overflow: hidden;
@@ -31,7 +45,6 @@ body {
 .start-zone {
   height: 4em;
 }
-
 .stripe {
   position: relative;
   opacity: 0.5;
@@ -54,19 +67,18 @@ body {
 .container {
   display: inline-block;
 }
-// OG STRIPE{
-//   position: relative;
-//   opacity: 0.5;
-//   top: 50%;
-//   width: 210vw;
-//   min-width: 80vw;
-//   height: 5%;
-//   background: repeating-linear-gradient(
-//     to right,
-//     white,
-//     white 8vw,
-//     transparent 8vw,
-//     transparent 20vw
-//   );
-//   background-repeat: repeat-x;
-// }
+#playerCharacter {
+  width: 70px;
+  height: 70px;
+  z-index: 0;
+  position: absolute;
+  left: 40vw;
+  top: 18vh;
+}
+.hide-this {
+  display: none;
+}
+
+// color pallettes - terracotta and green #E2725B, #3F826D, #E1E6E1
+// cool beige and green #D8BCAB, #A0ECD0, #3A606E
+// champagne and green #F7E7CE, #588157, #1D201F
