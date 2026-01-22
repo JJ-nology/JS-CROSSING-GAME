@@ -44,9 +44,9 @@ This game asks the player to help character cross a busy road without being hit 
      - [ ] Object vehicles created programmatically.
      - [ ] Attributes = color, speed, starting position.
      - [ ] Timing for vehicles starting and moving.
-   - [ ] The only active key/ event listener should be the up arrow (for mobile and tablet think about screen tap and how to use it).
+   - [x] The only active key/ event listener should be the up arrow (for mobile and tablet think about screen tap and how to use it).
 2. [ ] When player moves the character.
-   - [ ] Player should only be able to move forward/ up the page (no backwards, left or right movement).
+   - [x] Player should only be able to move forward/ up the page (no backwards, left or right movement).
    - [ ] If player is too close/ collides with a vehicle GAME OVER.
    - [ ] If player makes it to the opposite safe zone/ ending area the game should continue with the character returning to the bottom of the page safe zone ready to continue playing.
 3. [ ] When player reaches the ending zone.
