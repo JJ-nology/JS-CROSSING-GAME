@@ -20,12 +20,10 @@ button {
 .game-window {
   display: none;
   position: relative;
-  z-index: -1;
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  min-height: 60vh;
   max-height: 80vh;
-  margin: auto;
 }
 
 .road-area {
@@ -39,10 +37,7 @@ button {
 .road-lane {
   overflow: hidden;
   background-color: rgb(47, 46, 46);
-  height: 50px;
-  color: white;
-  align-items: stretch;
-  text-decoration: dashed;
+  height: 60vh;
 }
 
 .end-zone {
@@ -51,21 +46,6 @@ button {
 
 .start-zone {
   height: 4em;
-}
-
-.stripe {
-  position: relative;
-  opacity: 0.5;
-  top: 50%;
-  width: 210vw;
-  min-width: 210vw;
-  height: 5%;
-  background: repeating-linear-gradient(to left, white, white 6vw, transparent 6vw, transparent 20vw);
-  background-repeat: space;
-}
-
-#level {
-  align-self: flex-end;
 }
 
 .container {
@@ -78,9 +58,25 @@ button {
   z-index: 0;
   position: absolute;
   left: 40vw;
-  top: 18vh;
+  top: 140px;
 }
 
 .hide-this {
   display: none;
+}
+
+.square {
+  width: 25p;
+  height: 25px;
+  z-index: 0;
+  background-color: red;
+  position: absolute;
+  left: 100vw;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  z-index: 0;
+  position: absolute;
 }

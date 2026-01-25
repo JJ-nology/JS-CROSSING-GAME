@@ -1,23 +1,39 @@
 const startButton = document.querySelector(".start-button");
 const startContainer = document.querySelector(".start-container");
 const gameWindow = document.querySelector(".game-window");
+const endZone = document.querySelector(".end-zone");
 const playerCharacter = document.querySelector("#playerCharacter");
 const vehicleList = document.querySelector(".vehicle-list");
 const carListItems = document.querySelector("img");
+const levelDisplay = document.querySelector(".level-display");
+let gameCount = 1;
+
 let playerSpeed = 5;
 let carSpeed = 5;
 let carList = [];
-let startLeftPos = 0;
-const maxRightPos = gameWindow.getBoundingClientRect().right;
-// let gameOn = true;
-let margin = 0;
+
 //move player down the page
 const movePlayer = (yPosition) => {
-  console.log(yPosition);
-  playerCharacter.style.top = `${yPosition + playerSpeed}px`;
+  if (yPosition < endZone.getBoundingClientRect().top) {
+    console.log(yPosition, endZone.getBoundingClientRect().top);
+    playerCharacter.style.top = `${yPosition + playerSpeed}px`;
+  } else if (yPosition >= endZone.getBoundingClientRect().top - 10) {
+    // player in endzone
+    levelUp();
+  }
 };
-//move each car
-const make = () => {};
+// reset player
+const resetPlayer = () => {
+  playerCharacter.style.top = "140px";
+};
+
+// player levels up
+const levelUp = () => {
+  gameCount += 1;
+  levelDisplay.textContent = gameCount;
+  resetPlayer();
+  continueGame();
+};
 //create vehicles
 const createCar = () => {
   const car = document.createElement("img");
@@ -31,35 +47,41 @@ const createCar = () => {
   carList.push(car);
   return;
 };
-
-//start the game
-const startGame = () => {
-  startContainer.classList.toggle("hide-this");
-  gameWindow.classList.toggle("hide-this");
-  playerCharacter.classList.toggle("hide-this");
+// continue game
+const continueGame = (gamecount) => {
   // move car
+  const viewPortWidth = window.innerWidth;
+  const endZonePosition = gameWindow.getBoundingClientRect().top - 25;
 
-  var margin = 0;
+  let startLeftPos = Math.floor(Math.random() * viewPortWidth);
 
-  let w = window.innerWidth;
   const moveEachVehicle = (timestamp) => {
-    if (margin > w) {
-      margin = 0;
-      carListItems.style.marginLeft = margin + "px";
+    if (startLeftPos >= viewPortWidth) {
+      startLeftPos = 0;
+      carListItems.style.marginLeft = startLeftPos + "px";
     } else {
-      carListItems.style.marginLeft = margin + "px";
+      carListItems.style.marginLeft = startLeftPos + "px";
     }
-    margin += 1;
-
+    startLeftPos += 1;
     requestAnimationFrame(moveEachVehicle);
   };
   requestAnimationFrame(moveEachVehicle);
+
   window.addEventListener("keydown", (event) => {
     if (event.key === 37 || event.code === "ArrowDown") {
       currentPosition = playerCharacter.offsetTop;
       movePlayer(currentPosition);
     }
   });
+};
+
+//start the game
+const startGame = () => {
+  startContainer.classList.toggle("hide-this");
+  gameWindow.classList.toggle("hide-this");
+  playerCharacter.classList.toggle("hide-this");
+  // console.log(window.innerHeight, gameWindow.getBoundingClientRect().bottom);
+  continueGame();
 };
 
 // event listeners
