@@ -48,11 +48,11 @@ This game asks the player to help character cross a busy road without being hit 
 2. [ ] When player moves the character.
    - [x] Player should only be able to move forward/ up the page (no backwards, left or right movement).
    - [ ] If player is too close/ collides with a vehicle GAME OVER.
-   - [ ] If player makes it to the opposite safe zone/ ending area the game should continue with the character returning to the bottom of the page safe zone ready to continue playing.
-3. [ ] When player reaches the ending zone.
-   - [ ] Character resets to the bottom of the screen
-   - [ ] Score/ level display increase by 1
-   - [ ] Speed of the vehicles should increase
+   - [x] If player makes it to the opposite safe zone/ ending area the game should continue with the character returning to the bottom of the page safe zone ready to continue playing.
+3. [x] When player reaches the ending zone.
+   - [x] Character resets to the bottom of the screen
+   - [x] Score/ level display increase by 1
+   - [x] Speed of the vehicles should increase
 4. [ ] When player is at GAME OVER
    - [ ] game should stop (vehicles stop moving, play character inactive)
    - [ ] Player's current level/ score should be displayed with a 'well done' message.

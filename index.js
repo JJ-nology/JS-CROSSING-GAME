@@ -4,7 +4,7 @@ const gameWindow = document.querySelector(".game-window");
 const endZone = document.querySelector(".end-zone");
 const playerCharacter = document.querySelector("#playerCharacter");
 const vehicleList = document.querySelector(".vehicle-list");
-const carListItems = document.querySelector("img");
+const carListItems = document.querySelectorAll("li");
 const levelDisplay = document.querySelector(".level-display");
 let gameCount = 1;
 
@@ -15,25 +15,40 @@ let carList = [];
 //move player down the page
 const movePlayer = (yPosition) => {
   if (yPosition < endZone.getBoundingClientRect().top) {
-    console.log(yPosition, endZone.getBoundingClientRect().top);
+    // console.log(yPosition, endZone.getBoundingClientRect().top);
     playerCharacter.style.top = `${yPosition + playerSpeed}px`;
   } else if (yPosition >= endZone.getBoundingClientRect().top - 10) {
     // player in endzone
     levelUp();
   }
+  carListItems.forEach((vehicle) => {
+    let player = playerCharacter.getBoundingClientRect();
+    let car = vehicle.getBoundingClientRect();
+
+    if (
+      player.x <= car.x + car.width &&
+      player.x + player.width >= car.x &&
+      player.y <= car.y + car.height &&
+      player.y + player.height >= car.y
+    ) {
+      console.log("collision detected");
+    }
+  });
 };
 // reset player
 const resetPlayer = () => {
   playerCharacter.style.top = "140px";
 };
-
 // player levels up
 const levelUp = () => {
   gameCount += 1;
   levelDisplay.textContent = gameCount;
   resetPlayer();
   continueGame();
+  playerSpeed *= 1.2;
+  carSpeed *= 1.2;
 };
+
 //create vehicles
 const createCar = () => {
   const car = document.createElement("img");
@@ -56,14 +71,17 @@ const continueGame = (gamecount) => {
   let startLeftPos = Math.floor(Math.random() * viewPortWidth);
 
   const moveEachVehicle = (timestamp) => {
-    if (startLeftPos >= viewPortWidth) {
-      startLeftPos = 0;
-      carListItems.style.marginLeft = startLeftPos + "px";
-    } else {
-      carListItems.style.marginLeft = startLeftPos + "px";
-    }
-    startLeftPos += 1;
-    requestAnimationFrame(moveEachVehicle);
+    carListItems.forEach((car) => {
+      if (startLeftPos >= viewPortWidth) {
+        startLeftPos = 0;
+        car.style.marginLeft = startLeftPos + "px";
+      } else {
+        car.style.marginLeft = startLeftPos + "px";
+      }
+      startLeftPos += 1;
+
+      requestAnimationFrame(moveEachVehicle);
+    });
   };
   requestAnimationFrame(moveEachVehicle);
 
