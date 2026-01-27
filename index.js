@@ -1,116 +1,133 @@
-const startButton = document.querySelector(".start-button");
+const startButton = document.querySelector("#startButton");
 const startContainer = document.querySelector(".start-container");
 const gameWindow = document.querySelector(".game-window");
-const endZone = document.querySelector(".end-zone");
-const playerCharacter = document.querySelector("#playerCharacter");
-const carListItems = document.querySelectorAll("li");
 const levelDisplay = document.querySelector(".level-display");
 const instructions = document.querySelector(".instructions");
+const canvas = document.querySelector("#canvas");
+const roadArea = document.querySelector(".road-area");
 
-let gameCount = 1;
-let animationID;
-let playerSpeed = 5;
-let carSpeed = 5;
+// Set up the game window
 let carList = [];
-//eventlistener function
-const keyDown = (event) => {
-  if (event.key === 37 || event.code === "ArrowDown") {
-    currentPosition = playerCharacter.offsetTop;
-    movePlayer(currentPosition);
-  }
-};
-//move player down the page
-const movePlayer = (yPosition) => {
-  if (yPosition < endZone.getBoundingClientRect().top) {
-    playerCharacter.style.top = `${yPosition + playerSpeed}px`;
-  } else if (yPosition >= endZone.getBoundingClientRect().top - 10) {
-    // player in endzone
-    levelUp();
-  }
-  // collision detection between player and all cars
-  carListItems.forEach((vehicle) => {
-    let player = playerCharacter.getBoundingClientRect();
-    let car = vehicle.getBoundingClientRect();
+let createSpeed = 2;
+let carTiming;
+let breakTiming;
+let gameCount = 0;
+const context = canvas.getContext("2d");
 
-    if (
-      player.x <= car.x + car.width &&
-      player.x + player.width >= car.x &&
-      player.y <= car.y + car.height &&
-      player.y + player.height >= car.y
-    ) {
-      gameOver(gameCount);
-    }
-  });
+// Set up player character
+const playerChar = {
+  width: 50,
+  height: 50,
+  speed: 10,
+  y: 0,
 };
-// reset player
-const resetPlayer = () => {
-  playerCharacter.style.top = "140px";
+const resetPlayerchar = () => {
+  playerChar.x = canvas.width / 2 - 25;
 };
-// player levels up
 const levelUp = () => {
   gameCount += 1;
   levelDisplay.textContent = gameCount;
-  resetPlayer();
-  continueGame();
-  playerSpeed *= 1.2;
-  carSpeed *= 1.2;
-};
-// gameOver
-const gameOver = (gameCount) => {
-  // cancel animation and event listeners, reset player, display gamecount and message
-  cancelAnimationFrame(animationID);
-  window.removeEventListener("keydown", keyDown);
-  resetPlayer();
-  gameCount === 1
-    ? (instructions.innerHTML =
-        "Wow, Not even once? Better luck next time. Click on Let's go to try again")
-    : (instructions.innerHTML = `Welldone! you helped Pengoo across ${gameCount} times.  Click on Let's go to play again`);
-  startContainer.classList.toggle("hide-this");
-  gameWindow.classList.toggle("hide-this");
-  playerCharacter.classList.toggle("hide-this");
-};
-//create vehicles
-const createCar = (top) => {
-  const newElement = document.createElement("li");
-  const car = document.createElement("img");
-  car.src = `./assets/${Math.ceil(Math.random() * 10)}.png`;
-  car.alt = "picture of a car";
-  car.style.position = "absolute";
-  car.style.top = gameWindow.getBoundingClientRect().top;
-  car.offsetLeft = "0vw";
-  car.offsetTop = `${top}`;
-  //append child etc
-  return;
-};
-// continue game
-const continueGame = (gamecount) => {
-  // move car
-  const viewPortWidth = window.innerWidth;
-  let startLeftPos = Math.floor(Math.random() * viewPortWidth);
-  const moveEachVehicle = (timestamp) => {
-    carListItems.forEach((car) => {
-      if (startLeftPos >= viewPortWidth) {
-        startLeftPos = 0;
-        car.style.marginLeft = startLeftPos + "px";
-      } else {
-        car.style.marginLeft = startLeftPos + "px";
-      }
-      startLeftPos += 1;
-    });
-    requestAnimationFrame(moveEachVehicle);
-  };
-  animationID = requestAnimationFrame(moveEachVehicle);
-  //event listener
-  window.addEventListener("keydown", keyDown);
+  playerChar.x = canvas.width / 2 - 25;
+  playerChar.y = 0;
 };
 
-//start the game
+// Start the game
 const startGame = () => {
   startContainer.classList.toggle("hide-this");
   gameWindow.classList.toggle("hide-this");
-  playerCharacter.classList.toggle("hide-this");
-  continueGame();
+  // canvas set up
+  canvas.width = roadArea.getBoundingClientRect().width;
+  canvas.height = roadArea.getBoundingClientRect().height;
+  // update player
+  resetPlayerchar();
+  playerChar.y = 0;
+  document.addEventListener("keydown", moveplayerChar);
+  carTiming = setInterval(createCar, 1000);
+  breakTiming = setInterval(() => {
+    clearInterval(carTiming);
+    setTimeout(() => {
+      carTiming = setInterval(createCar, 1000);
+    }, 5000);
+  }, 15000);
+  updateGame();
+};
+// Move the playerChar
+const moveplayerChar = (event) => {
+  if (event.key === "ArrowDown" && playerChar.y <= canvas.height - 50) {
+    playerChar.y += playerChar.speed;
+  }
+};
+// Create a car
+const createCar = () => {
+  const car = {
+    x: -50,
+    y: Math.random() * canvas.height,
+    width: 50,
+    height: 50,
+  };
+  // keep cars out of the safe zone
+  if (car.y > canvas.height - 60 || car.y < 60) {
+    y = Math.random() * canvas.height;
+  } else {
+    carList.push(car);
+  }
+};
+// Update the game
+const updateGame = () => {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  // Draw playerChar
+  context.fillStyle = "#e1e6e1";
+  context.fillRect(
+    playerChar.x,
+    playerChar.y,
+    playerChar.width,
+    playerChar.height
+  );
+  // Draw cars
+  context.fillStyle = "#e2725b";
+  carList.forEach((car) => {
+    context.fillRect(car.x, car.y, car.width, car.height);
+    car.x += createSpeed;
+    // check if player in endzone
+    if (playerChar.y > canvas.height - 60) {
+      levelUp();
+    }
+    // Check collision with playerChar
+    if (
+      car.x < playerChar.x + playerChar.width &&
+      car.x + car.width > playerChar.x &&
+      car.y < playerChar.y + playerChar.height &&
+      car.y + car.height > playerChar.y
+    ) {
+      gameOver();
+    }
+
+    // Remove cars that are off the screen
+    if (car.x > canvas.width) {
+      carList = carList.filter((b) => b !== car);
+    }
+  });
+  requestAnimationFrame(updateGame);
+};
+// Game over
+const gameOver = () => {
+  gameCount === 0
+    ? (instructions.innerHTML =
+        "Wow, Not even once? Better luck next time. Click on Let's play to try again")
+    : (instructions.innerHTML = `Welldone! you helped Pengoo across ${gameCount} times. Click on Let's play to try again`);
+  clearInterval(carTiming);
+  clearInterval(breakTiming);
+  document.removeEventListener("keydown", moveplayerChar);
+  carList = [];
+  startContainer.classList.toggle("hide-this");
+  gameWindow.classList.toggle("hide-this");
+  gameCount = 0;
 };
 
 // event listeners
 startButton.addEventListener("click", startGame);
+onresize = () => {
+  canvas.width = roadArea.getBoundingClientRect().width;
+  canvas.height = roadArea.getBoundingClientRect().height;
+  resetPlayerchar();
+};
