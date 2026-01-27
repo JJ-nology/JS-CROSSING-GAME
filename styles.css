@@ -1,82 +1,121 @@
 body {
-  background-color: white;
+  background-color: #3f826d;
   display: flex;
   flex-direction: column;
+  font: bold 1.3rem "Fira Sans", sans-serif;
+  height: 100vh;
+  color: #e1e1e1;
+}
+
+h1 p {
+  text-align: center;
 }
 
 .start-container {
   margin: auto;
   padding-bottom: 10px;
 }
+.start-container__h1 {
+  text-align: center;
+}
+.start-container__p {
+  text-align: center;
+  padding: 10px;
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .start-container {
+    font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  .start-container {
+    font-size: 2rem;
+  }
+}
 
 button {
-  display: flex;
+  display: block;
   background-color: #e2725b;
-  color: white;
-  padding: 5px;
-  border-radius: 10px;
+  color: #e1e1e1;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 0 auto;
+  border-color: #e2725b;
+  font-size: x-large;
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  button {
+    font-size: 1.5rem;
+    padding: 20px;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  button {
+    font-size: 2rem;
+    padding: 20px;
+  }
 }
 
 .game-window {
   display: none;
-  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 60vh;
   max-height: 80vh;
+  padding: 20px;
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .game-window {
+    font-size: 1.5rem;
+    max-height: 70vh;
+  }
+}
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+  .game-window {
+    font-size: 1.5rem;
+    max-height: 70vh;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  .game-window {
+    font-size: 2rem;
+    max-height: 80vh;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+  }
 }
 
 .road-area {
-  display: grid;
-  align-items: start;
+  display: flex;
+  align-items: center;
   row-gap: 1px;
-  grid-template-rows: auto;
-  background-color: green;
-}
-
-.road-lane {
-  overflow: hidden;
   background-color: rgb(47, 46, 46);
-  height: 60vh;
+  min-height: 80vh;
+  max-height: 80vh;
+  padding: 20px;
+  overflow: auto;
 }
-
-.end-zone {
-  height: 4em;
-}
-
-.start-zone {
-  height: 4em;
-}
-
-.container {
-  display: inline-block;
-}
-
-#playerCharacter {
-  width: 70px;
-  height: 70px;
-  z-index: 0;
-  position: absolute;
-  left: 40vw;
-  top: 140px;
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+  .road-area {
+    padding: 30px;
+  }
 }
 
 .hide-this {
   display: none;
 }
 
-.square {
-  width: 25p;
-  height: 25px;
-  z-index: 0;
-  background-color: red;
-  position: absolute;
-  left: 100vw;
-}
-
-.image {
-  width: 50px;
-  height: 50px;
-  z-index: 0;
-  position: absolute;
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+  .game-window h2 {
+    font-size: xx-large;
+  }
+  .game-window .game-window {
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
 }
