@@ -3,42 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS crossing game</title>
+    <title>Pengoo crossing</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="start-container">
-      <p>Help Pengoo reach the other side</p>
-      <p class="start-instructions">Using only the down arrow</p>
-      <button class="start-button">Let's Play</button>
-    </div>
-
-    <div class="game-window hide-this">
-      <div class="container game-on">
-        <h1>JS crossing</h1>
-        <h2>Level:<span class="level-display">1</span></h2>
+      <div class="start-container">
+        <h1 class="start-container__h1">Help Pengoo reach the other side</h1>
+        <p class="instructions start-container__p">
+          You can only travel in 1 direction. There is no going back.
+        </p>
+        <button class="start-container__button" id="startButton">Let's Play</button>
       </div>
-      <div class="road-area">
-        <div class="start-zone">start-zone</div>
-        <div class="road-lane">
-          <ul class="vehicle-list">
-            <li><img src="./assets/1.png" alt="" /></li>
 
-            <img src="./assets/1.png" alt="" />
-            <img src="./assets/1.png" alt="" />
-          </ul>
-        </div>
-        <div class="end-zone">end zone</div>
+      <div class="game-window hide-this">
+          <h2>PENGOO crossing: <span class="level-display">0</span></h2>
+          <div class="road-area">
+              <canvas id="canvas"></canvas>
       </div>
-    </div>
-    <div>
-      <img
-        src="./penguin.png"
-        alt="Player character"
-        id="playerCharacter"
-        class="hide-this"
-      />
-    </div>
   </body>
   <script src="./index.js" charset="UTF-8"></script>
 </html>

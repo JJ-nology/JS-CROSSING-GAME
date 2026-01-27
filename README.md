@@ -38,25 +38,25 @@ This game asks the player to help character cross a busy road without being hit 
 
 # JS
 
-1. [ ] When player clicks on START button.
+1. [x] When player clicks on START button.
    - [x] Player character should be on-screen.
-   - [ ] Vehicles should be created and should start moving across the screen
-     - [ ] Object vehicles created programmatically.
-     - [ ] Attributes = color, speed, starting position.
-     - [ ] Timing for vehicles starting and moving.
+   - [x] Vehicles should be created and should start moving across the screen
+     - [x] Object vehicles created programmatically.
+     - [x] Attributes = color, speed, starting position.
+     - [x] Timing for vehicles starting and moving.
    - [x] The only active key/ event listener should be the up arrow (for mobile and tablet think about screen tap and how to use it).
-2. [ ] When player moves the character.
+2. [x] When player moves the character.
    - [x] Player should only be able to move forward/ up the page (no backwards, left or right movement).
-   - [ ] If player is too close/ collides with a vehicle GAME OVER.
+   - [x] If player is too close/ collides with a vehicle GAME OVER.
    - [x] If player makes it to the opposite safe zone/ ending area the game should continue with the character returning to the bottom of the page safe zone ready to continue playing.
 3. [x] When player reaches the ending zone.
    - [x] Character resets to the bottom of the screen
    - [x] Score/ level display increase by 1
    - [x] Speed of the vehicles should increase
-4. [ ] When player is at GAME OVER
-   - [ ] game should stop (vehicles stop moving, play character inactive)
-   - [ ] Player's current level/ score should be displayed with a 'well done' message.
-   - [ ] Player should be given the option to play again from level 1.
+4. [x] When player is at GAME OVER
+   - [x] game should stop (vehicles stop moving, play character inactive)
+   - [x] Player's current level/ score should be displayed with a 'well done' message.
+   - [x] Player should be given the option to play again from level 1.
 5. OOP CONSIDERATIONS
    - Vehicles will need to be objects with color, movement, starting position attributes
    - How will off-screen vehicles be managed?? Delete or just leave them??
@@ -78,3 +78,4 @@ This game asks the player to help character cross a busy road without being hit 
 - At higher levels, have vehicles moving from the opposite side of the screen.
 - Some sort of game item that increases time to cross by 10 seconds.
 - Different colors for the vehicles per level.
+- smooth movement of player character.
